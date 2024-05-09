@@ -69,9 +69,6 @@ class UsuarioLive extends Component
             $this->apodo = $usuario->apodo;
             $this->estatus = $usuario->estatus;
             $this->mostrarFormulario = true;
-
-
-
     }
 
     //METODO PARA ABRIR EL MODAL REGISTRO

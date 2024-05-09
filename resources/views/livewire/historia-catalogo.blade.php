@@ -1,5 +1,16 @@
 <div class="tabla-history">
     <br>
+    <div class="form-group">
+        <form id="filtrarForm">
+            <label for="proyecto">Filtrar por proyecto:</label>
+            <select name="proyecto"  wire:model.live="filtrarPorProyecto">
+                @foreach($proyectos as $proyecto)
+                    <option value="{{ $proyecto->id }}">{{ $proyecto->nombre }}</option>
+                @endforeach
+            </select>
+        </form>
+    </div>
+    <br>
     <table>
         <thead>
             <tr>

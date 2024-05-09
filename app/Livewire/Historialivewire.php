@@ -15,6 +15,7 @@ class Historialivewire extends Component
     public $nombre;
     public $proyecto_id;
     public $historia;
+    public $filtrarPorProyecto;
 
     public function rules(): array
     {
@@ -27,12 +28,13 @@ class Historialivewire extends Component
 
     public function mount()
     {
-
+        $this->filtrarPorProyecto = Proyecto::all()->first()->id;
     }
 
     public function render(){
-        $historias = Historia::all();
+
         $proyectos = Proyecto::all();
+        $historias = Proyecto::find($this->filtrarPorProyecto)->historias;
         return view('livewire.historia-catalogo',
         ['historias'=>$historias, 'proyectos'=>$proyectos]);
     }

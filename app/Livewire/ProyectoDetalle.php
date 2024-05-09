@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Proyecto;
 use App\Models\Usuario;
+use App\Models\Rol;
 use App\Models\Historia;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -36,17 +37,25 @@ class ProyectoDetalle extends Component
         ['proyecto'=>$this->proyecto]);
     }
 
-    public function agregarHistoria()
-    {}
+    public function agregarHistoria(){
 
-    public function mostrarAgregarRoles()
-    {
+    }
+
+    public function mostrarAgregarRoles(){
         $this->mostrarAgregarRol = true;
+    }
+
+    public function closeModal(){
+        $this->mostrarAgregarRol = false;
     }
 
     public function agregarRol()
     {
-
+        $rol = new Rol();
+        $rol->rol = $this->rol;
+        $rol->proyecto_id = $this->proyecto_id;
+        $rol->usuario_id = $this->usuario;
+        $rol->save();
+        $this->closeModal();
     }
-
 }

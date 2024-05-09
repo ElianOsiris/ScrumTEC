@@ -19,4 +19,9 @@ class Rol extends Model
     {
         return $this->hasOne(Usuario::class,"id","usuario_id");
     }
+    protected $fillable = [
+        'rol',
+        'proyecto_id',
+        'usuario_id'
+    ];
 }
