@@ -10,6 +10,12 @@ class Proyecto extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'fecha_entrega'
+        // Agrega aquí otros campos que quieras permitir para la asignación masiva
+    ];
 
     public function historias()
     {
@@ -24,7 +30,7 @@ class Proyecto extends Model
     public function product_owner() {
 
     }
-    public function scrum_masters() {
+    public function getScrumMastersAttribute() {
         //select usuarios.* form usuarios
         //inner join roles on (roles.usuario_id == usuarios.id)
         //where roles.rol = 'Scrum master' and roles.proyecto_id = $this.id

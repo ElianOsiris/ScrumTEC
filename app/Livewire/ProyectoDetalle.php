@@ -34,7 +34,9 @@ class ProyectoDetalle extends Component
     public function render(){
         $this->proyecto = Proyecto::find($this->proyecto_id);
         return view('livewire.proyecto-detalle',
-        ['proyecto'=>$this->proyecto]);
+        ['proyecto'=>$this->proyecto])
+        ->layout('layouts.plantilla')
+        ->slot('main');
     }
 
     public function agregarHistoria(){
@@ -57,5 +59,9 @@ class ProyectoDetalle extends Component
         $rol->usuario_id = $this->usuario;
         $rol->save();
         $this->closeModal();
+    }
+
+    public function closeModal() {
+        $this->mostrarAgregarRol = false;
     }
 }
